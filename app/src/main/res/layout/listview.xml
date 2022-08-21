@@ -21,20 +21,21 @@
 
 
     <RelativeLayout
+        android:id="@+id/dataRL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_toRightOf="@id/img"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
-        >
+        android:layout_toRightOf="@id/img"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
-            android:textSize="22sp"
             android:textColor="@color/black"
+            android:textSize="22sp"
 
             />
 
@@ -42,22 +43,43 @@
             android:id="@+id/RollNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RollNum"
-            android:textSize="20sp"
-            android:layout_marginTop="5dp"
             android:layout_below="@id/Name"
-            android:textColor="@color/black"/>
+            android:layout_marginTop="5dp"
+            android:text="RollNum"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
         <TextView
             android:id="@+id/Status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="IsEnrolled"
-            android:textSize="20sp"
             android:layout_below="@id/RollNum"
             android:layout_marginTop="5dp"
+            android:text="IsEnrolled"
             android:textColor="@color/black"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/dataRL"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="Del" />
+        <Button
+            android:id="@+id/Edit"
+            android:text="Edit"
+            android:backgroundTint="@color/green"
+            android:layout_below="@id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             />
     </RelativeLayout>
 </RelativeLayout>

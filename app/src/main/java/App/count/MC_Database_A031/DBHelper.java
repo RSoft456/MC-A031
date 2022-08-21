@@ -55,9 +55,16 @@ public class DBHelper extends SQLiteOpenHelper {
         //else{return true;}
     }
 
+    public void  Delete(String Roll){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String deleteQuerry="DELETE FROM "+ STUDENT_TABLE+" WHERE "+STUDENT_ROLL+" = "+Roll;
+        db.execSQL(deleteQuerry);
+//        db.delete("STUDENT_TABLE",STUDENT_ROLL+"=?",new String[]{Roll});
+        db.close();
+    }
     public ArrayList<StudentModel> getAllStudents() {
 
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursorCourses = db.rawQuery("SELECT * FROM " + STUDENT_TABLE, null);
 

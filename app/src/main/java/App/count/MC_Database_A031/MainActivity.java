@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 DBHelper dbHelper  = new DBHelper(MainActivity.this);
                 dbHelper.addStudent(studentModel);
+
             }
         });
 
