@@ -27,8 +27,18 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/img"
-        android:orientation="vertical">
+        >
 
+
+        <EditText
+            android:id="@+id/EditName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+android:visibility="gone"
+            />
         <TextView
             android:id="@+id/Name"
             android:layout_width="wrap_content"
@@ -36,6 +46,7 @@
             android:text="Name"
             android:textColor="@color/black"
             android:textSize="22sp"
+            android:visibility="visible"
 
             />
 
@@ -47,6 +58,17 @@
             android:layout_marginTop="5dp"
             android:text="RollNum"
             android:textColor="@color/black"
+            android:visibility="visible"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/EditRollNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EditName"
+            android:layout_marginTop="5dp"
+            android:text="RollNum"
+            android:visibility="gone"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
 
@@ -57,8 +79,18 @@
             android:layout_below="@id/RollNum"
             android:layout_marginTop="5dp"
             android:text="IsEnrolled"
+            android:visibility="visible"
             android:textColor="@color/black"
             android:textSize="20sp" />
+
+        <Switch
+            android:id="@+id/EditSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EditRollNum"
+            android:showText="true"
+            android:text="@string/IsEnrolled"
+            android:visibility="gone" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -73,6 +105,13 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/red"
             android:text="Del" />
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="Cancel"
+            android:visibility="gone"/>
         <Button
             android:id="@+id/Edit"
             android:text="Edit"

@@ -18,7 +18,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String STUDENT_TABLE = "StudentTable";
 
 
-
     public DBHelper(@Nullable Context context) {
         super(context, "MyDB.db", null, 1);
     }
@@ -39,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void  addStudent(StudentModel STUDENTModel){
+    public void addStudent(StudentModel STUDENTModel) {
         SQLiteDatabase db = this.getWritableDatabase();
         //Hash map, as we did in bundles
         ContentValues cv = new ContentValues();
@@ -55,17 +54,21 @@ public class DBHelper extends SQLiteOpenHelper {
         //else{return true;}
     }
 
-    public void  Delete(String Roll){
+    public void Update(StudentModel data) {
+
+    }
+
+    public void Delete(String Roll) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String deleteQuerry="DELETE FROM "+ STUDENT_TABLE+" WHERE "+STUDENT_ROLL+" = "+Roll;
+        String deleteQuerry = "DELETE FROM " + STUDENT_TABLE + " WHERE " + STUDENT_ROLL + " = " + Roll;
         db.execSQL(deleteQuerry);
 //        db.delete("STUDENT_TABLE",STUDENT_ROLL+"=?",new String[]{Roll});
         db.close();
     }
+
     public ArrayList<StudentModel> getAllStudents() {
 
         SQLiteDatabase db = this.getWritableDatabase();
-
         Cursor cursorCourses = db.rawQuery("SELECT * FROM " + STUDENT_TABLE, null);
 
         ArrayList<StudentModel> studentArrayList = new ArrayList<>();
@@ -73,12 +76,10 @@ public class DBHelper extends SQLiteOpenHelper {
         // moving our cursor to first position.
         if (cursorCourses.moveToFirst()) {
             do {
-
                 studentArrayList.add(new StudentModel(cursorCourses.getString(1),
                         cursorCourses.getInt(2),
                         cursorCourses.getInt(3) == 1 ? true : false));
             } while (cursorCourses.moveToNext());
-
         }
 
         cursorCourses.close();
