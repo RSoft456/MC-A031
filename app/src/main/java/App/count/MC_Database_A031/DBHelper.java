@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -55,7 +56,25 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void Update(StudentModel data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //Hash map, as we did in bundles
+        Log.d("gyugyjj",String.valueOf(data.isEnroll()));
+        String UpdateQuerry;
+        if(data.isEnroll()){
+             UpdateQuerry = "UPDATE " + STUDENT_TABLE + " SET " + STUDENT_NAME + " = " +"'"+data.getName()+"' "+" , "+ STUDENT_ENROLL +" = 1 "+ " WHERE "+STUDENT_ROLL+" ="+ "'"+data.getRollNmber()+"' ";
+        }
+        else{
+             UpdateQuerry = "UPDATE " + STUDENT_TABLE + " SET " + STUDENT_NAME + " = " +"'"+data.getName()+"' "+" , "+ STUDENT_ENROLL +" = 0 "+ " WHERE "+STUDENT_ROLL+" ="+ "'"+data.getRollNmber()+"' ";
 
+        }
+
+        db.execSQL(UpdateQuerry);
+//        ContentValues cv = new ContentValues();
+//
+//        cv.put(STUDENT_NAME, data.getName());
+//        cv.put(STUDENT_ENROLL, data.isEnroll());
+//        db.update("STUDENT_TABLE", cv, STUDENT_ROLL+ " = ?",new String[]{Integer.toString(data.getRollNmber())});
+        db.close();
     }
 
     public void Delete(String Roll) {

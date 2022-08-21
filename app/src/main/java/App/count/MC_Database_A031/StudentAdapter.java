@@ -39,7 +39,7 @@ public class StudentAdapter extends ArrayAdapter<StudentModel> {
         ImageView img = convertView.findViewById(R.id.img);
         Name.setText(list.getName());
         String roll=Integer.toString(list.getRollNmber());
-        Rollnum.setText(Integer.toString(list.getRollNmber()));
+            Rollnum.setText(Integer.toString(list.getRollNmber()));
         img.setImageResource(R.drawable.profile);
         if (list.isEnroll()) {
             status.setText("Enrolled");
@@ -84,11 +84,17 @@ public class StudentAdapter extends ArrayAdapter<StudentModel> {
                     EditStatus.setVisibility(View.INVISIBLE);
                     Cancel.setVisibility(View.INVISIBLE);
                     Name.setText(EditName.getText().toString());
+                    StudentModel model;
                     if (EditStatus.isChecked()) {
                         status.setText("Enrolled");
+                         model= new StudentModel(Name.getText().toString(),Integer.valueOf(Rollnum.getText().toString()),true);
                     } else {
                         status.setText("Not Enrolled");
+                         model= new StudentModel(Name.getText().toString(),Integer.valueOf(Rollnum.getText().toString()),false);
                     }
+
+                    DBHelper db = new DBHelper(getContext());
+                    db.Update(model);
                     click=0;
                 }
             }
